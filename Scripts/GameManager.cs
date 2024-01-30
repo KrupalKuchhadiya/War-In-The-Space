@@ -8,10 +8,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Enemy1_Prefeb;
     [SerializeField] List<GameObject> Enemy_Spwan_Position;
     [SerializeField] GameObject First_Spwan_Position;
-    
+    [SerializeField] GameObject UpObject;
+ 
+
     // Start is called before the first frame update
     void Start()
     {
+        Vector2 pos = new Vector2(Screen.width, Screen.height);
+        Vector2 ScreenSize = Camera.main.ScreenToWorldPoint(pos);
+        UpObject.GetComponent<BoxCollider2D>().size = new Vector2(ScreenSize.x * 2, 1);
+        UpObject.transform.position = new Vector2(0, ScreenSize.y + UpObject.GetComponent<BoxCollider2D>().size.y / 2);
         Enemy_Spwaned();
     }
 
