@@ -227,5 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53b3c6abd0e9324fafa0e6a4976b2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreenSize: {x: 0, y: 0}
   Bullet: {fileID: 67097752513435130, guid: b21ebdbbddd31b246b9e256b8238c9bf, type: 3}
   SpawnObject: {fileID: 1398776688043937016}

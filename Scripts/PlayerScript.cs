@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    public static PlayerScript Instance;
     //Variables For Follow The Mouse Arrow
-    Vector2 ScreenSize;
+    public Vector2 ScreenSize;
     float width_Screen = Screen.width;
     float height_Screen = Screen.height;
     float speed = 5f;
@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;        
         ScreenSize = Camera.main.ScreenToWorldPoint(new Vector2(width_Screen, height_Screen));
         StartCoroutine(SpawnBullet(0.2f));
     }
@@ -70,5 +71,14 @@ public class PlayerScript : MonoBehaviour
         //G.gameObject.transform.parent = SpawnObject.gameObject.transform;
         G.gameObject.transform.position = SpawnObject.gameObject.transform.position;
         StartCoroutine(SpawnBullet(0.2f));
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }
