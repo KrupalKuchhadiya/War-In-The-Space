@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         DownObject.GetComponent<BoxCollider2D>().size = new Vector2(ScreenSize.x * 2, 1);
         DownObject.transform.position = new Vector2(0, -ScreenSize.y - DownObject.GetComponent<BoxCollider2D>().size.y / 2);
         spawn_Enemy();
-        StartCoroutine(enemy_BombSpwan(0.5f));
+        StartCoroutine(enemy_BombSpawn(0.5f));
     }
 
     // Institate,Position & Parent To Enemy
@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
 
  
 
-    IEnumerator enemy_BombSpwan(float Time)
+    IEnumerator enemy_BombSpawn(float Time)
     {
         yield return new WaitForSeconds(Time);
         Instantiate(prefeb_Enemy2, new Vector3(Random.Range(-PlayerScript.Instance.ScreenSize.x, PlayerScript.Instance.ScreenSize.x), Random.Range(6, 7), 0), Quaternion.identity);
-        StartCoroutine(enemy_BombSpwan(1f));
+        StartCoroutine(enemy_BombSpawn(1f));
     }
 }
